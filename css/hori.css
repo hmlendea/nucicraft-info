@@ -1,0 +1,11 @@
+.masthead {
+  padding-top: calc(6rem + 24px);
+  padding-bottom: calc(2rem);
+}
+.page-section {
+    padding: 4rem 0;
+}
+.typewrite,
+#contact > div > div > div > p {
+    font-size: x-large;
+}
