@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2zmLjnnC3jo=",
+  "success": true,
+  "projectFilePath": "/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/NuciCraftInfo.csproj",
+  "expectedPackageFiles": [
+    "/home/horatiu/.cache/nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.11/microsoft.aspnetcore.app.internal.assets.10.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

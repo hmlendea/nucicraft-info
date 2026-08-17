@@ -1,0 +1,17 @@
+@page "/links/vote-minecraftserverlist.html"
+@page "/links/vote-minecraftserverlist"
+@inject NavigationManager NavigationManager
+
+<PageTitle>Vote Minecraft Server List</PageTitle>
+
+<p>Redirecting...</p>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            NavigationManager.NavigateTo("https://minecraft-server-list.com/server/507877/vote", forceLoad: true);
+        }
+    }
+}

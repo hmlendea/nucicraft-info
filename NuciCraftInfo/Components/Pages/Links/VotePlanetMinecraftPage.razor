@@ -1,0 +1,17 @@
+@page "/links/vote-planetminecraft.html"
+@page "/links/vote-planetminecraft"
+@inject NavigationManager NavigationManager
+
+<PageTitle>Vote Planet Minecraft</PageTitle>
+
+<p>Redirecting...</p>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            NavigationManager.NavigateTo("https://planetminecraft.com/server/nucicraft-6185337/vote", forceLoad: true);
+        }
+    }
+}
