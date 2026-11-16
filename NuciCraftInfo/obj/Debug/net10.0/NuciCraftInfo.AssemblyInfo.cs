@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NuciCraftInfo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d379d8c6ade6c05b5940bde6ff26f08f3e742a2a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+911e425148948feb55052946313ba9ee17d105c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("NuciCraftInfo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NuciCraftInfo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
