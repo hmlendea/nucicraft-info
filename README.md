@@ -36,6 +36,7 @@ The player information website for the NuciCraft Minecraft server.
 - [Project Structure](#project-structure)
   - [Projects and Packages](#projects-and-packages)
   - [Directories](#directories)
+- [Architecture](#architecture)
 - [Deployment](#deployment)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
@@ -290,6 +291,12 @@ The repository hosts the ASP.NET Core project, its unit and integration test pro
 | `NuciCraftInfo.UnitTests/` | bUnit tests covering the rendered pages and layout. |
 | `NuciCraftInfo.IntegrationTests/` | Endpoint and startup tests hosting the application in memory. |
 | `.vscode/` | Editor tasks and launch configuration for building, publishing, and running the site. |
+
+## 🏗️ Architecture
+
+NuciCraft Info Website is an ASP.NET Core Blazor application that server-renders the pages and proxies the NuciCraft API through a cached minimal API endpoint.
+
+See the [ARCHITECTURE.md](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
 
 ## 🚢 Deployment
 
