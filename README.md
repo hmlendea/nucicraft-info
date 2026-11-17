@@ -1,3 +1,4 @@
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Visit-blue)](https://hmlendea.github.io/nucicraft-info/)
 [![Build Status](https://github.com/hmlendea/nucicraft-info/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nucicraft-info/actions/workflows/dotnet.yml)
 [![License](https://img.shields.io/github/license/hmlendea/nucicraft-info)](https://github.com/hmlendea/nucicraft-info/blob/master/LICENSE)
@@ -346,7 +347,9 @@ For support, please [open an issue](https://github.com/hmlendea/nucicraft-info/i
 
 Discovered a problem with NuciCraft Info Website or have a suggestion for it? [Open an issue](https://github.com/hmlendea/nucicraft-info/issues)!
 
-If you find this project useful, consider starring ⭐️ it on GitHub!
+If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub!
+
+[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
 
 ## 📄 License
 
