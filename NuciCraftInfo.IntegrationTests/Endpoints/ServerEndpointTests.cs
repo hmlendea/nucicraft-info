@@ -37,7 +37,7 @@ namespace NuciCraftInfo.IntegrationTests.Endpoints
         {
             factory.NuciCraftHandler.EnqueueJsonResponse(
                 ServerResource,
-                """{"success":true,"code":200,"message":null,"hmac":null,"content":{"name":"NuciCraft","hostname":"mc.nucilandia.ro","javaEditionPort":25565,"bedrockEditionPort":19132,"onlinePlayersCount":12}}""");
+                """{"success":true,"message":"Operation completed successfully.","code":"SUCCESS","hmac":null,"content":{"name":"NuciCraft","hostname":"mc.nucilandia.ro","javaEditionPort":25565,"bedrockEditionPort":19132,"onlinePlayersCount":12}}""");
 
             using HttpResponseMessage response = await client.GetAsync(ServerEndpoint);
             using JsonDocument document = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
@@ -56,7 +56,9 @@ namespace NuciCraftInfo.IntegrationTests.Endpoints
         [Test]
         public async Task GivenTheServerEndpoint_WhenRequestingIt_ThenTheApiKeyIsSentAsABearerToken()
         {
-            factory.NuciCraftHandler.EnqueueJsonResponse(ServerResource, """{"content":{}}""");
+            factory.NuciCraftHandler.EnqueueJsonResponse(
+                ServerResource,
+                """{"success":true,"message":"Operation completed successfully.","code":"SUCCESS","hmac":null,"content":{}}""");
 
             using HttpResponseMessage response = await client.GetAsync(ServerEndpoint);
 
@@ -66,9 +68,31 @@ namespace NuciCraftInfo.IntegrationTests.Endpoints
         }
 
         [Test]
+        public async Task GivenTheServerEndpoint_WhenRequestingIt_ThenTheApiMetadataHeadersAreSent()
+        {
+            factory.NuciCraftHandler.EnqueueJsonResponse(
+                ServerResource,
+                """{"success":true,"message":"Operation completed successfully.","code":"SUCCESS","hmac":null,"content":{}}""");
+
+            using HttpResponseMessage response = await client.GetAsync(ServerEndpoint);
+
+            HttpRequestMessage request = factory.NuciCraftHandler.RequestedMessages[0];
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(request.Headers.GetValues("X-Client-ID"), Has.Exactly(1).Items);
+                Assert.That(request.Headers.GetValues("X-Request-ID"), Has.Exactly(1).Items);
+                Assert.That(request.Headers.GetValues("X-Timestamp"), Has.Exactly(1).Items);
+            });
+        }
+
+        [Test]
         public async Task GivenTheServerEndpoint_WhenTheApiReturnsNotFound_ThenAnEmptyPayloadIsReturned()
         {
-            factory.NuciCraftHandler.EnqueueResponse(ServerResource, HttpStatusCode.NotFound);
+            factory.NuciCraftHandler.EnqueueErrorResponse(
+                ServerResource,
+                HttpStatusCode.NotFound,
+                """{"success":false,"message":"The requested resource was not found.","code":"NOT_FOUND","hmac":null}""");
 
             using HttpResponseMessage response = await client.GetAsync(ServerEndpoint);
             string responseBody = await response.Content.ReadAsStringAsync();
@@ -93,11 +117,21 @@ namespace NuciCraftInfo.IntegrationTests.Endpoints
         }
 
         [Test]
+        public async Task GivenTheServerEndpoint_WhenTheApiIsUnreachable_ThenServiceUnavailableIsReturned()
+        {
+            factory.NuciCraftHandler.EnqueueTransportFailure(ServerResource);
+
+            using HttpResponseMessage response = await client.GetAsync(ServerEndpoint);
+
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.ServiceUnavailable));
+        }
+
+        [Test]
         public async Task GivenTheServerEndpoint_WhenTheApiReturnsNoContent_ThenAnEmptyPayloadIsReturned()
         {
             factory.NuciCraftHandler.EnqueueJsonResponse(
                 ServerResource,
-                """{"success":false,"code":500,"message":"Failure","hmac":null}""");
+                """{"success":false,"message":"An error occurred while processing your request.","code":"ERROR","hmac":null}""");
 
             using HttpResponseMessage response = await client.GetAsync(ServerEndpoint);
             string responseBody = await response.Content.ReadAsStringAsync();
@@ -112,7 +146,9 @@ namespace NuciCraftInfo.IntegrationTests.Endpoints
         [Test]
         public async Task GivenTheServerEndpoint_WhenRequestingItTwice_ThenTheApiIsQueriedOnce()
         {
-            factory.NuciCraftHandler.EnqueueJsonResponse(ServerResource, """{"content":{"onlinePlayersCount":3}}""");
+            factory.NuciCraftHandler.EnqueueJsonResponse(
+                ServerResource,
+                """{"success":true,"message":"Operation completed successfully.","code":"SUCCESS","hmac":null,"content":{"onlinePlayersCount":3}}""");
 
             using HttpResponseMessage firstResponse = await client.GetAsync(ServerEndpoint);
             using HttpResponseMessage secondResponse = await client.GetAsync(ServerEndpoint);

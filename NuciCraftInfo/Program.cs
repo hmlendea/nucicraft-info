@@ -6,10 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using NuciAPI.Client;
+
 using NuciWeb.HTTP;
 
 using NuciCraftInfo.Components;
 using NuciCraftInfo.Endpoints;
+using NuciCraftInfo.Service;
 
 namespace NuciCraftInfo
 {
@@ -39,13 +42,27 @@ namespace NuciCraftInfo
             builder.Services.AddSingleton<HttpClient>(services =>
             {
                 HttpClient client = HttpClientCreator.Create();
-                client.BaseAddress = new Uri(
-                    builder.Configuration.GetValue<string>("NuciCraftApi:BaseUrl") ?? string.Empty
-                );
                 client.Timeout = TimeSpan.FromSeconds(30);
 
                 return client;
             });
+            builder.Services.AddSingleton<INuciApiClient>(services =>
+            {
+                string baseUrl = builder.Configuration.GetValue<string>("NuciCraftApi:BaseUrl");
+
+                if (string.IsNullOrWhiteSpace(baseUrl))
+                {
+                    throw new ArgumentException(
+                        "The 'NuciCraftApi:BaseUrl' setting must contain the base address of the NuciCraft API.",
+                        nameof(baseUrl)
+                    );
+                }
+
+                HttpClient client = services.GetRequiredService<HttpClient>();
+
+                return new NuciApiClient(baseUrl, client);
+            });
+            builder.Services.AddSingleton<INuciCraftService, NuciCraftService>();
 
             WebApplication app = builder.Build();
 

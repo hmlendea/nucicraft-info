@@ -19,6 +19,8 @@ namespace NuciCraftInfo.IntegrationTests.Infrastructure
 
         internal const string ApiKey = "integration-tests-api-key";
 
+        private const string ApiBaseUrl = "https://test.url.ro/";
+
         private readonly StubHttpMessageHandler nuciCraftHandler = new();
 
         internal StubHttpMessageHandler NuciCraftHandler => nuciCraftHandler;
@@ -30,18 +32,15 @@ namespace NuciCraftInfo.IntegrationTests.Infrastructure
             builder.ConfigureAppConfiguration(configuration => configuration.AddInMemoryCollection(
                 new Dictionary<string, string?>
                 {
-                    ["NuciCraftApi:ApiKey"] = ApiKey
+                    ["NuciCraftApi:ApiKey"] = ApiKey,
+                    ["NuciCraftApi:BaseUrl"] = ApiBaseUrl
                 }));
             builder.ConfigureServices(services =>
             {
                 services.RemoveAll<HttpClient>();
-
-                HttpClient client = new(nuciCraftHandler, disposeHandler: false)
-                {
-                    BaseAddress = new Uri("https://api.nucilandia.ro/")
-                };
-
-                services.AddSingleton(client);
+                services.AddSingleton(
+                    new HttpClient(nuciCraftHandler, disposeHandler: false)
+                );
             });
         }
     }

@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NuciAPI.Client" Version="1.2.4" />
     <PackageReference Include="NuciWeb.HTTP" Version="1.7.3" />
   </ItemGroup>
 

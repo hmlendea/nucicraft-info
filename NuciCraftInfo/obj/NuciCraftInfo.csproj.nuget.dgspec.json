@@ -50,6 +50,10 @@
               "version": "[10.0.14, )",
               "autoReferenced": true
             },
+            "NuciAPI.Client": {
+              "target": "Package",
+              "version": "[1.2.4, )"
+            },
             "NuciWeb.HTTP": {
               "target": "Package",
               "version": "[1.7.3, )"

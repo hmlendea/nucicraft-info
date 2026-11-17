@@ -8,7 +8,6 @@
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/NuciCraftInfo.csproj.CoreCompileInputs.cache
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/NuciCraftInfo.MvcApplicationPartsAssemblyInfo.cache
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/NuciCraftInfo.sourcelink.json
-/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/appsettings.Development.json
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/appsettings.json
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/NuciCraftInfo.staticwebassets.runtime.json
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/NuciCraftInfo.staticwebassets.endpoints.json
@@ -26,7 +25,6 @@
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/scopedcss/bundle/NuciCraftInfo.styles.css
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/scopedcss/projectbundle/NuciCraftInfo.bundle.scp.css
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/compressed/7qdl71bbos-{0}-pcqfy9p8xz-pcqfy9p8xz.gz
-/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/compressed/r92scrkvo6-{0}-3gqonzw65t-3gqonzw65t.gz
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/compressed/1go6hy6sfb-{0}-xoc4vj4kjv-xoc4vj4kjv.gz
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/compressed/5a0ixj6vwf-{0}-t1bwjds9o6-t1bwjds9o6.gz
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/compressed/5whavc637x-{0}-ejnf1v5dzx-ejnf1v5dzx.gz
@@ -45,3 +43,8 @@
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/NuciCraftInfo.pdb
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/NuciCraftInfo.genruntimeconfig.cache
 /home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/ref/NuciCraftInfo.dll
+/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/obj/Debug/net10.0/compressed/r92scrkvo6-{0}-c96rv17kh0-c96rv17kh0.gz
+/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/NuciAPI.dll
+/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/NuciAPI.Client.dll
+/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/NuciSecurity.HMAC.dll
+/home/horatiu/Proiecte/minecraft/nucicraft-info/NuciCraftInfo/bin/Debug/net10.0/appsettings.Development.json

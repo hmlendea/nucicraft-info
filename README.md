@@ -97,14 +97,13 @@ Each redirect also answers on its legacy `.html` address.
 | File | Scope | Purpose |
 |------|-------|---------|
 | `NuciCraftInfo/appsettings.json` | Application | Defines the NuciCraft API address, the API key placeholder, the cache duration, the log levels, and the accepted host headers. |
-| `NuciCraftInfo/appsettings.Development.json` | Development | Overrides the NuciCraft API address with a local instance and adjusts the log levels. |
 
 ### Settings
 
 The subsequent settings are recognised:
 | Section | Key | Type | Default | Required | Description |
 |---------|-----|------|---------|----------|-------------|
-| `NuciCraftApi` | `BaseUrl` | `string` | `https://api.nucilandia.ro/` | Yes | Base address of the NuciCraft API that supplies the server information. |
+| `NuciCraftApi` | `BaseUrl` | `string` | `https://api.mc.nucilandia.ro/` | Yes | Base address of the NuciCraft API that supplies the server information. |
 | `NuciCraftApi` | `ApiKey` | `string` | `—` | Yes | Bearer token accepted by the NuciCraft API. |
 | `NuciCraftApi` | `CacheDurationInMinutes` | `integer` | `30` | No | Number of minutes for which the proxied API responses are cached. |
 | `Logging:LogLevel` | `Default` | `string` | `Information` | No | Minimum log level for all categories. |
@@ -116,7 +115,6 @@ The subsequent settings are recognised:
 Configuration is resolved through the standard ASP.NET Core providers. From highest to lowest precedence:
 - Command-line arguments
 - Environment variables
-- `appsettings.{Environment}.json`
 - `appsettings.json`
 
 ### Reload Behaviour
@@ -157,6 +155,8 @@ A value below `30` for `NuciCraftApi:CacheDurationInMinutes` causes the applicat
 | Integration | Compatibility | Purpose | Required |
 |-------------|---------------|---------|----------|
 | [NuciCraft API](https://github.com/hmlendea/nucicraft-api) | `GET /Server`, bearer `Authorization` header, `content` response envelope | Supplies the server name, hostname, ports, and the live online player count shown in the Info section. | Yes |
+
+Requests to the NuciCraft API are made through `NuciAPI.Client`, which attaches the bearer token and the `X-Client-ID`, `X-Request-ID`, and `X-Timestamp` metadata headers the API boundary requires.
 
 ## 🛡️ Privacy and Data
 
@@ -235,6 +235,7 @@ This script downloads and executes an external release helper from `https://raw.
 
 | Package | Version | Scope | Purpose |
 |---------|---------|-------|---------|
+| `NuciAPI.Client` | 1.2.4 | Runtime | Supplies the request/response contracts and the `INuciApiClient` used to call the NuciCraft API, including the required metadata headers. |
 | `NuciWeb.HTTP` | 1.7.3 | Runtime | Provides the HTTP client factory used to query the NuciCraft API. |
 | `Bootstrap` | 4.6.0 | Runtime (front end) | Layout, components, and utility styles. |
 | `Start Bootstrap Freelancer` | — | Runtime (front end) | Base theme of the presentation layout. |
@@ -275,8 +276,11 @@ The repository hosts the ASP.NET Core project, its unit and integration test pro
 |-----------|---------|
 | `NuciCraftInfo/Components/` | Razor components, where `App.razor` is the HTML document, `Routes.razor` the router, and `Pages/` the individual pages. |
 | `NuciCraftInfo/Components/Pages/Links/` | Pages that redirect the legacy short links to their destinations. |
-| `NuciCraftInfo/Endpoints/` | Minimal API endpoints that proxy the NuciCraft API. |
+| `NuciCraftInfo/Endpoints/` | Minimal API endpoints that expose the NuciCraft API data. |
 | `NuciCraftInfo/Properties/` | Launch profiles used during local development. |
+| `NuciCraftInfo/Requests/` | NuciCraft API request contracts. |
+| `NuciCraftInfo/Responses/` | NuciCraft API response contracts. |
+| `NuciCraftInfo/Service/` | Application services that query the NuciCraft API through `NuciAPI.Client`. |
 | `NuciCraftInfo/wwwroot/` | Static assets: stylesheets, scripts, and `robots.txt`. |
 | `NuciCraftInfo.UnitTests/` | bUnit tests covering the rendered pages and layout. |
 | `NuciCraftInfo.IntegrationTests/` | Endpoint and startup tests hosting the application in memory. |

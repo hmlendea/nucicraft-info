@@ -12,17 +12,29 @@ namespace NuciCraftInfo.IntegrationTests.Infrastructure
         private const string JsonMediaType = "application/json";
 
         private readonly Dictionary<string, Queue<HttpResponseMessage>> responsesByResource = [];
+        private readonly HashSet<string> unreachableResources = [];
         private readonly List<string> requestedResources = [];
         private readonly List<string?> requestedAuthorisations = [];
+        private readonly List<HttpRequestMessage> requestedMessages = [];
 
         internal IReadOnlyList<string> RequestedResources => requestedResources;
 
         internal IReadOnlyList<string?> RequestedAuthorisations => requestedAuthorisations;
 
+        internal IReadOnlyList<HttpRequestMessage> RequestedMessages => requestedMessages;
+
         internal void EnqueueJsonResponse(string resource, string content)
             => EnqueueResponse(
                 resource,
                 new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(content, Encoding.UTF8, JsonMediaType)
+                });
+
+        internal void EnqueueErrorResponse(string resource, HttpStatusCode statusCode, string content)
+            => EnqueueResponse(
+                resource,
+                new HttpResponseMessage(statusCode)
                 {
                     Content = new StringContent(content, Encoding.UTF8, JsonMediaType)
                 });
@@ -34,6 +46,8 @@ namespace NuciCraftInfo.IntegrationTests.Infrastructure
                 {
                     Content = new StringContent("{}", Encoding.UTF8, JsonMediaType)
                 });
+
+        internal void EnqueueTransportFailure(string resource) => unreachableResources.Add(resource);
 
         internal void EnqueueResponse(string resource, HttpResponseMessage response)
         {
@@ -53,6 +67,14 @@ namespace NuciCraftInfo.IntegrationTests.Infrastructure
             string resource = request.RequestUri!.PathAndQuery.TrimStart('/');
             requestedResources.Add(resource);
             requestedAuthorisations.Add(request.Headers.Authorization?.ToString());
+            requestedMessages.Add(request);
+
+            if (unreachableResources.Contains(resource))
+            {
+                throw new HttpRequestException(
+                    $"The connection to '{request.RequestUri}' could not be established."
+                );
+            }
 
             if (responsesByResource.TryGetValue(resource, out Queue<HttpResponseMessage>? responses) &&
                 responses.Count > 0)
