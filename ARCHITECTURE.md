@@ -361,6 +361,8 @@ flowchart TD
     NuciCraftInfo --> NuciWeb.HTTP
     NuciCraftInfo.UnitTests --> NuciCraftInfo
     NuciCraftInfo.UnitTests --> bUnit
+    NuciCraftInfo.ArchitectureTests --> NuciCraftInfo
+    NuciCraftInfo.ArchitectureTests --> TngTech.ArchUnitNET.NUnit
     NuciCraftInfo.IntegrationTests --> NuciCraftInfo
     NuciCraftInfo.IntegrationTests --> Microsoft.AspNetCore.Mvc.Testing
 ```
@@ -368,7 +370,7 @@ flowchart TD
 The principal dependency rules are:
 - `NuciCraftInfo` depends on domain packages `NuciAPI.Client` and `NuciWeb.HTTP`.
 - Presentation components and endpoints depend on service contracts (`INuciCraftService`).
-- Test projects (`NuciCraftInfo.UnitTests` and `NuciCraftInfo.IntegrationTests`) reference `NuciCraftInfo`.
+- Test projects (`NuciCraftInfo.ArchitectureTests`, `NuciCraftInfo.UnitTests`, and `NuciCraftInfo.IntegrationTests`) reference `NuciCraftInfo`.
 - Direct circular dependencies between architectural layers are prohibited.
 
 ## 📦 External Dependencies
@@ -400,7 +402,8 @@ The application compiles to a self-contained web service executable across Linux
 
 ## ✅ Testing and Verification
 
-The test suite covers unit and integration levels:
+The test suite covers unit, integration, and architecture levels:
+- **Architecture Tests (`NuciCraftInfo.ArchitectureTests`):** ArchUnit.NET rules evaluated against the compiled production assembly, together with Roslyn source rules over the embedded production and test sources, enforcing the namespace, layering, naming, member organisation, formatting, and test conventions.
 - **Unit Tests (`NuciCraftInfo.UnitTests`):** bUnit tests executing Razor component rendering, DOM output, and navigation triggers in an isolated environment.
 - **Integration Tests (`NuciCraftInfo.IntegrationTests`):** Full web application host tests leveraging `WebApplicationFactory<App>` and `StubHttpMessageHandler` to verify HTTP endpoints, authorization headers, and startup constraints without network dependencies.
 
@@ -443,6 +446,7 @@ Extensions must preserve error handling semantics, returning `503 Service Unavai
 | Short-Link Pages | `NuciCraftInfo/Components/Pages/Links/` |
 | Static Assets | `NuciCraftInfo/wwwroot/` |
 | Unit Tests | `NuciCraftInfo.UnitTests/` |
+| Architecture Tests | `NuciCraftInfo.ArchitectureTests/` |
 | Integration Tests | `NuciCraftInfo.IntegrationTests/` |
 
 ## 📚 Related Documentation

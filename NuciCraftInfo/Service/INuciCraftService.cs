@@ -6,6 +6,6 @@ namespace NuciCraftInfo.Service
 {
     public interface INuciCraftService
     {
-        Task<GetServerResponse?> GetServerAsync();
+        public Task<GetServerResponse?> GetServerAsync();
     }
 }

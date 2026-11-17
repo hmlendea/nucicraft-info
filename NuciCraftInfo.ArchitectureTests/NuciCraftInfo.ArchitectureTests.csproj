@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>NuciCraftInfo.ArchitectureTests</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
+    <PackageReference Include="NUnit" Version="5.0.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.3.1" />
+    <PackageReference Include="TngTech.ArchUnitNET.NUnit" Version="0.13.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../NuciCraftInfo/NuciCraftInfo.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="../NuciCraftInfo/**/*.cs" Exclude="../NuciCraftInfo/bin/**/*.cs;../NuciCraftInfo/obj/**/*.cs">
+      <LogicalName>ProductionSources/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../NuciCraftInfo.UnitTests/**/*.cs" Exclude="../NuciCraftInfo.UnitTests/bin/**/*.cs;../NuciCraftInfo.UnitTests/obj/**/*.cs">
+      <LogicalName>UnitTestSources/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../NuciCraftInfo.IntegrationTests/**/*.cs" Exclude="../NuciCraftInfo.IntegrationTests/bin/**/*.cs;../NuciCraftInfo.IntegrationTests/obj/**/*.cs">
+      <LogicalName>IntegrationTestSources/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="./**/*.cs" Exclude="./bin/**/*.cs;./obj/**/*.cs">
+      <LogicalName>ArchitectureTestSources/%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../NuciCraftInfo.slnx">
+      <LogicalName>ProjectFiles/NuciCraftInfo.slnx</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../NuciCraftInfo/NuciCraftInfo.csproj">
+      <LogicalName>ProjectFiles/NuciCraftInfo/NuciCraftInfo.csproj</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../NuciCraftInfo.UnitTests/NuciCraftInfo.UnitTests.csproj">
+      <LogicalName>ProjectFiles/NuciCraftInfo.UnitTests/NuciCraftInfo.UnitTests.csproj</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="../NuciCraftInfo.IntegrationTests/NuciCraftInfo.IntegrationTests.csproj">
+      <LogicalName>ProjectFiles/NuciCraftInfo.IntegrationTests/NuciCraftInfo.IntegrationTests.csproj</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="./NuciCraftInfo.ArchitectureTests.csproj">
+      <LogicalName>ProjectFiles/NuciCraftInfo.ArchitectureTests/NuciCraftInfo.ArchitectureTests.csproj</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
