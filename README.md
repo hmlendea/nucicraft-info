@@ -45,6 +45,7 @@ The player information website for the NuciCraft Minecraft server.
 - [Code of Conduct](#code-of-conduct)
 - [Related Projects](#related-projects)
 - [Acknowledgements](#acknowledgements)
+- [Security](#security)
 - [Support](#support)
 - [Project Engagement](#project-engagement)
 - [License](#license)
@@ -349,6 +350,12 @@ See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct exp
 - [Animate.css](https://animate.style/) and [WOW.js](https://wowjs.uk/): entry and scroll animations.
 - [Google Fonts](https://fonts.google.com/): the Montserrat and Lato typefaces.
 - [NuciLandia](https://github.com/hmlendea/nucilandia): the NuciCraft coat of arms and the community artwork.
+
+## 🔒 Security
+
+NuciCraft Info Website is maintained with a security policy that covers the reporting, assessment, and coordinated disclosure of vulnerabilities.
+
+For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
 
 ## 💬 Support
 
