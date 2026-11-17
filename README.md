@@ -322,6 +322,8 @@ When doing so, please:
 - Include tests for additional or modified functionality
 - Raise a new [issue](https://github.com/hmlendea/nucicraft-info/issues) for problems or suggestions
 
+See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+
 ## 🔗 Related Projects
 
 - [NuciCraft API](https://github.com/hmlendea/nucicraft-api): the REST service that supplies the server information and the live online player count shown by this website.
