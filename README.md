@@ -1,5 +1,5 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Visit-blue)](https://hmlendea.github.io/nucicraft-info/)
+[![Latest Release](https://img.shields.io/github/v/release/hmlendea/nucicraft-info)](https://github.com/hmlendea/nucicraft-info/releases/latest)
 [![Build Status](https://github.com/hmlendea/nucicraft-info/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nucicraft-info/actions/workflows/dotnet.yml)
 [![Security Scan](https://github.com/hmlendea/nucicraft-info/actions/workflows/security.yml/badge.svg)](https://github.com/hmlendea/nucicraft-info/actions/workflows/security.yml)
 [![License](https://img.shields.io/github/license/hmlendea/nucicraft-info)](https://github.com/hmlendea/nucicraft-info/blob/master/LICENSE)
@@ -67,7 +67,7 @@ The player information website for the NuciCraft Minecraft server.
 
 ## 🚀 Usage
 
-Open the hosted website in a browser. The home page is one scrolling document organised into a masthead and an **Info** section, whose rows link to the server address, the live player count, the Discord dialog, the world map, the donation page, the launcher dialog, and the skin dialog.
+Open the deployed instance in a browser. The home page is one scrolling document organised into a masthead and an **Info** section, whose rows link to the server address, the live player count, the Discord dialog, the world map, the donation page, the launcher dialog, and the skin dialog.
 
 The pages are rendered on the server; client-side scripts provide the typewriter effect, the animated reveals, and the retrieval of the live player count.
 
@@ -93,7 +93,7 @@ Each redirect also answers on its legacy `.html` address.
 - The figure is cached on the server for at least 30 minutes, so it can lag behind the server.
 - The interface depends on third-party content delivery networks for Bootstrap, Start Bootstrap Freelancer, Font Awesome, jQuery, Animate.css, WOW.js, and Google Fonts; if those are unreachable, the presentation degrades.
 - The player-facing content is written in Romanian only.
-- GitHub Pages serves repository files verbatim, so it cannot host this ASP.NET Core application.
+- The application must be self-hosted, because no static host serves the ASP.NET Core runtime it requires.
 
 ## ⚙️ Configuration
 
@@ -101,7 +101,8 @@ Each redirect also answers on its legacy `.html` address.
 
 | File | Scope | Purpose |
 |------|-------|---------|
-| `NuciCraftInfo/appsettings.json` | Application | Defines the NuciCraft API address, the API key placeholder, the cache duration, the log levels, and the accepted host headers. |
+| `NuciCraftInfo/appsettings.json` | Application | Defines the NuciCraft API address, the API key, the cache duration, the log levels, and the accepted host headers. |
+| `NuciCraftInfo/appsettings.Development.json` | Application (Development) | Restates the log levels for the local development environment. |
 
 ### Settings
 
@@ -257,7 +258,7 @@ dotnet publish NuciCraftInfo/NuciCraftInfo.csproj --configuration Release --runt
 | `coverlet.collector` | 10.1.0 | Development | Coverage collection during test execution. |
 | `Microsoft.AspNetCore.Mvc.Testing` | 10.0.14 | Development | Hosts the application for the integration tests. |
 | `Microsoft.CodeAnalysis.CSharp` | 5.12.0 | Development | Parses the sources so the architecture tests can assert the source conventions. |
-| `Microsoft.NET.Test.Sdk` | 18.11.0 | Development | Test runner infrastructure. |
+| `Microsoft.NET.Test.Sdk` | 18.11.0 | Development | Test runner infrastructure of the unit and integration projects; the architecture tests use 18.12.0. |
 | `NUnit` | 5.0.0 | Development | Unit testing framework. |
 | `NUnit.Analyzers` | 4.15.0 | Development | NUnit assertion and API analysers. |
 | `NUnit3TestAdapter` | 6.3.1 | Development | VS Test Platform adapter. |
@@ -340,6 +341,7 @@ See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct exp
 ## 🔗 Related Projects
 
 - [NuciCraft API](https://github.com/hmlendea/nucicraft-api): the REST service that supplies the server information and the live online player count shown by this website.
+- [Minecraft Server Raspberry Pi](https://github.com/hmlendea/minecraft-server-raspberrypi): the Minecraft server provisioning and operations tooling for the Raspberry Pi that runs the NuciCraft server presented by this website.
 
 ## 🙏 Acknowledgements
 
