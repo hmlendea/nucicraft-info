@@ -1,0 +1,17 @@
+@page "/links/vote-minecraft-mp.html"
+@page "/links/vote-minecraft-mp"
+@inject NavigationManager NavigationManager
+
+<PageTitle>Vote Minecraft MP</PageTitle>
+
+<p>Redirecting...</p>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            NavigationManager.NavigateTo("https://minecraft-mp.com/server/329223/vote", forceLoad: true);
+        }
+    }
+}

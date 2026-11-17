@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="NuciCraftInfo/NuciCraftInfo.csproj" />
+  <Project Path="NuciCraftInfo.IntegrationTests/NuciCraftInfo.IntegrationTests.csproj" />
+  <Project Path="NuciCraftInfo.UnitTests/NuciCraftInfo.UnitTests.csproj" />
+</Solution>

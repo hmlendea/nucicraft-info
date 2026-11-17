@@ -1,0 +1,17 @@
+@page "/links/vote-topminecraftservers.html"
+@page "/links/vote-topminecraftservers"
+@inject NavigationManager NavigationManager
+
+<PageTitle>Vote Top Minecraft Servers</PageTitle>
+
+<p>Redirecting...</p>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            NavigationManager.NavigateTo("https://topminecraftservers.org/server/36792", forceLoad: true);
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@page "/links/discord-invitation.html"
+@page "/links/discord-invitation"
+@inject NavigationManager NavigationManager
+
+<PageTitle>Discord Invitation</PageTitle>
+
+<p>Redirecting...</p>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            NavigationManager.NavigateTo("https://discord.gg/zFM5xWGF7c", forceLoad: true);
+        }
+    }
+}
