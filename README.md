@@ -42,6 +42,7 @@ The player information website for the NuciCraft Minecraft server.
 - [Deployment](#deployment)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
 - [Related Projects](#related-projects)
 - [Acknowledgements](#acknowledgements)
 - [Support](#support)
@@ -330,6 +331,10 @@ When doing so, please:
 - Raise a new [issue](https://github.com/hmlendea/nucicraft-info/issues) for problems or suggestions
 
 See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
+
+## 📜 Code of Conduct
+
+See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
 
 ## 🔗 Related Projects
 

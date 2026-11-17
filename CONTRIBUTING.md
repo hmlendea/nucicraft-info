@@ -16,6 +16,7 @@ This document covers the guidelines and processes for contributing to this proje
     - [Pull Request Guidelines](#pull-request-guidelines)
   - [Testing](#testing)
   - [Documentation](#documentation)
+- [Code of Conduct](#code-of-conduct)
 - [Donations](#donations)
 - [License](#license)
 - [Getting Assistance](#getting-assistance)
@@ -87,11 +88,15 @@ dotnet test NuciCraftInfo.UnitTests/NuciCraftInfo.UnitTests.csproj
 - Preview changes locally if possible.
 - When updating dependencies (e.g., NuGet packages) or modifying code that affects project structure, update relevant documentation files (README.md, SECURITY.md, ARCHITECTURE.md, docs/, or any other project-specific documentation files) to reflect the changes.
 
-## � Donations
+## 📜 Code of Conduct
+
+This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## 💝 Donations
 
 This project is developed and maintained during spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/funding) and giving it a star ⭐️ on GitHub!
 
-## �📄 License
+## 📄 License
 
 By contributing, you agree that your contributions will be licensed under the GNU General Public License v3.0.
 
