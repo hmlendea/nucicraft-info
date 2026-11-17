@@ -210,7 +210,7 @@ NuciCraftApi__ApiKey='…' dotnet watch run --project NuciCraftInfo/NuciCraftInf
 
 ### Test
 
-The NUnit unit suite renders the Razor pages with bUnit, while the integration suite hosts the application with `WebApplicationFactory` and replaces the NuciCraft `HttpClient` with a stub handler, so no live API access is required:
+The NUnit architecture suite asserts the layering, dependency, naming, formatting, and source conventions against the compiled production assembly and its sources, the unit suite renders the Razor pages with bUnit, and the integration suite hosts the application with `WebApplicationFactory` while replacing the NuciCraft `HttpClient` with a stub handler, so no live API access is required:
 
 ```bash
 dotnet test NuciCraftInfo.slnx
@@ -254,10 +254,12 @@ dotnet publish NuciCraftInfo/NuciCraftInfo.csproj --configuration Release --runt
 | `bunit` | 2.15.2 | Development | Renders the Razor components in the unit tests. |
 | `coverlet.collector` | 10.1.0 | Development | Coverage collection during test execution. |
 | `Microsoft.AspNetCore.Mvc.Testing` | 10.0.14 | Development | Hosts the application for the integration tests. |
+| `Microsoft.CodeAnalysis.CSharp` | 5.12.0 | Development | Parses the sources so the architecture tests can assert the source conventions. |
 | `Microsoft.NET.Test.Sdk` | 18.11.0 | Development | Test runner infrastructure. |
 | `NUnit` | 5.0.0 | Development | Unit testing framework. |
 | `NUnit.Analyzers` | 4.15.0 | Development | NUnit assertion and API analysers. |
 | `NUnit3TestAdapter` | 6.3.1 | Development | VS Test Platform adapter. |
+| `TngTech.ArchUnitNET.NUnit` | 0.13.5 | Development | Evaluates the architecture rules against the compiled production assembly. |
 
 ## ⚙️ GitHub Actions
 
@@ -269,13 +271,14 @@ dotnet publish NuciCraftInfo/NuciCraftInfo.csproj --configuration Release --runt
 
 ## 🗂️ Project Structure
 
-The repository hosts the ASP.NET Core project, its unit and integration test projects, alongside the solution file, the release helper, and the editor configuration.
+The repository hosts the ASP.NET Core project, its architecture, unit, and integration test projects, alongside the solution file, the release helper, and the editor configuration.
 
 ### Projects and Packages
 
 | Project | Type | Purpose |
 |---------|------|---------|
 | `NuciCraftInfo/` | ASP.NET Core web application | Renders and serves the website. |
+| `NuciCraftInfo.ArchitectureTests/` | NUnit test project | Enforces the layering, dependency, naming, formatting, and source conventions with ArchUnit.NET and Roslyn. |
 | `NuciCraftInfo.UnitTests/` | NUnit test project | Verifies the rendered pages and components with bUnit. |
 | `NuciCraftInfo.IntegrationTests/` | NUnit test project | Verifies the proxied endpoint and the startup configuration against a stubbed NuciCraft API. |
 
@@ -291,6 +294,7 @@ The repository hosts the ASP.NET Core project, its unit and integration test pro
 | `NuciCraftInfo/Responses/` | NuciCraft API response contracts. |
 | `NuciCraftInfo/Service/` | Application services that query the NuciCraft API through `NuciAPI.Client`. |
 | `NuciCraftInfo/wwwroot/` | Static assets: stylesheets, scripts, and `robots.txt`. |
+| `NuciCraftInfo.ArchitectureTests/` | Architecture tests that enforce the documented layering and coding conventions. |
 | `NuciCraftInfo.UnitTests/` | bUnit tests covering the rendered pages and layout. |
 | `NuciCraftInfo.IntegrationTests/` | Endpoint and startup tests hosting the application in memory. |
 | `.vscode/` | Editor tasks and launch configuration for building, publishing, and running the site. |

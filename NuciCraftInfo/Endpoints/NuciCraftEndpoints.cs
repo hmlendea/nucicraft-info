@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-using NuciCraftInfo.Responses;
 using NuciCraftInfo.Service;
 
 namespace NuciCraftInfo.Endpoints
@@ -15,24 +14,18 @@ namespace NuciCraftInfo.Endpoints
         public static string CachePolicyName => "NuciCraft";
 
         public static void MapNuciCraftEndpoints(this WebApplication application)
-        {
-            application
+            => application
                 .MapGet("/api/nucicraft/server", async (INuciCraftService service) =>
                 {
-                    GetServerResponse? server;
-
                     try
                     {
-                        server = await service.GetServerAsync();
+                        return Results.Json(await service.GetServerAsync());
                     }
                     catch (HttpRequestException)
                     {
                         return Results.StatusCode(StatusCodes.Status503ServiceUnavailable);
                     }
-
-                    return Results.Json(server);
                 })
                 .CacheOutput(CachePolicyName);
-        }
     }
 }
