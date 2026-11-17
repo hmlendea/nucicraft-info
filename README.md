@@ -162,7 +162,9 @@ Requests to the NuciCraft API are made through `NuciAPI.Client`, which attaches 
 
 NuciCraft Info Website sets no cookies, runs no analytics, and persists no information concerning its visitors.
 
-The public server figures shown in the interface are retrieved server-side and held in a memory cache in order to limit the load on the NuciCraft API. The pages additionally load assets from third-party services, so the browser contacts jsDelivr, cdnjs, Google Fonts, Font Awesome, Start Bootstrap, and GitHub directly for stylesheets, scripts, typefaces, and images.
+For the detailed description of how the application handles privacy and personal data, see the [Privacy Statement](./PRIVACY.md).
+
+The public server figures shown in the interface are retrieved server-side and held in a memory cache in order to limit the load on the NuciCraft API. The application itself processes no personal data; the pages nevertheless load assets from third-party services, so the browser contacts jsDelivr, cdnjs, Google Fonts, Font Awesome, Start Bootstrap, and GitHub directly for stylesheets, scripts, typefaces, and images.
 
 | Data | Purpose | Storage | Retention | Optional |
 |------|---------|---------|-----------|----------|
