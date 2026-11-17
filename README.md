@@ -221,15 +221,17 @@ dotnet test NuciCraftInfo.slnx --collect:"XPlat Code Coverage" --results-directo
 
 ### Release
 
-The repository includes `release.sh`, which delegates to the upstream deployment script used by the project maintainer.
+Releases are produced by the [GitHub Release](https://github.com/hmlendea/nucicraft-info/blob/master/.github/workflows/github-release.yml) workflow. Maintainers publish a GitHub release whose tag carries the semantic version, with an optional leading `v`; publishing it triggers the workflow, which builds the self-contained archives and attaches them to that release.
 
-```bash
-bash ./release.sh 1.0.0
-```
-
-This script downloads and executes an external release helper from `https://raw.githubusercontent.com/hmlendea/dotnet-release-scripts/refs/heads/master/dotnet/10.0.sh`.
+The workflow derives the .NET version from `NuciCraftInfo/NuciCraftInfo.csproj` and downloads and executes an external release helper from `https://raw.githubusercontent.com/hmlendea/dotnet-release-scripts/refs/heads/master/dotnet/10.0.sh` to build the artefacts.
 
 **Note:** Piping into `bash` is an intensely controversial topic. Please review any external scripts before running them in your environment!
+
+The same build can be reproduced locally with the published SDK:
+
+```bash
+dotnet publish NuciCraftInfo/NuciCraftInfo.csproj --configuration Release --runtime linux-x64 --self-contained true
+```
 
 ### Dependencies
 
@@ -257,6 +259,7 @@ This script downloads and executes an external release helper from `https://raw.
 | Workflow | Purpose | What it does |
 |----------|---------|--------------|
 | [ .NET ](https://github.com/hmlendea/nucicraft-info/blob/master/.github/workflows/dotnet.yml) | Continuous integration | Derives the .NET version from the project file, installs the matching SDK, restores dependencies, builds the solution, and runs the unit and integration tests on pushes and pull requests targeting `master`. |
+| [ GitHub Release ](https://github.com/hmlendea/nucicraft-info/blob/master/.github/workflows/github-release.yml) | Release automation | Derives the .NET version from the project file, installs the matching SDK, reads the version from the published tag, builds the self-contained archives through the shared release script, and publishes them as the release assets. |
 
 ## 🗂️ Project Structure
 
@@ -288,7 +291,7 @@ The repository hosts the ASP.NET Core project, its unit and integration test pro
 
 ## 🚢 Deployment
 
-`release.sh` publishes self-contained archives for `linux-arm`, `linux-arm64`, `linux-x64`, `osx-arm64`, `osx-x64`, `win-arm64`, and `win-x64`. Deploy the published output of the matching archive on a host that runs the ASP.NET Core application and terminates TLS, because the application redirects HTTP requests to HTTPS and, outside the development environment, emits HTTP Strict Transport Security headers. Supply `NuciCraftApi:ApiKey` through the environment of that host.
+The release built by the [GitHub Release](https://github.com/hmlendea/nucicraft-info/blob/master/.github/workflows/github-release.yml) workflow contains self-contained archives for `linux-arm`, `linux-arm64`, `linux-x64`, `osx-arm64`, `osx-x64`, `win-arm64`, and `win-x64`. Deploy the published output of the matching archive on a host that runs the ASP.NET Core application and terminates TLS, because the application redirects HTTP requests to HTTPS and, outside the development environment, emits HTTP Strict Transport Security headers. Supply `NuciCraftApi:ApiKey` through the environment of that host.
 
 ## 🩺 Troubleshooting
 
