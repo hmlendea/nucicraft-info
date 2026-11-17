@@ -1,6 +1,7 @@
 [![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Visit-blue)](https://hmlendea.github.io/nucicraft-info/)
 [![Build Status](https://github.com/hmlendea/nucicraft-info/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nucicraft-info/actions/workflows/dotnet.yml)
+[![Security Scan](https://github.com/hmlendea/nucicraft-info/actions/workflows/security.yml/badge.svg)](https://github.com/hmlendea/nucicraft-info/actions/workflows/security.yml)
 [![License](https://img.shields.io/github/license/hmlendea/nucicraft-info)](https://github.com/hmlendea/nucicraft-info/blob/master/LICENSE)
 
 # NuciCraft Info Website
@@ -264,6 +265,7 @@ dotnet publish NuciCraftInfo/NuciCraftInfo.csproj --configuration Release --runt
 |----------|---------|--------------|
 | [ .NET ](https://github.com/hmlendea/nucicraft-info/blob/master/.github/workflows/dotnet.yml) | Continuous integration | Derives the .NET version from the project file, installs the matching SDK, restores dependencies, builds the solution, and runs the unit and integration tests on pushes and pull requests targeting `master`. |
 | [ GitHub Release ](https://github.com/hmlendea/nucicraft-info/blob/master/.github/workflows/github-release.yml) | Release automation | Derives the .NET version from the project file, installs the matching SDK, reads the version from the published tag, builds the self-contained archives through the shared release script, and publishes them as the release assets. |
+| [ Security ](https://github.com/hmlendea/nucicraft-info/blob/master/.github/workflows/security.yml) | Security scanning | Installs the matching .NET SDK, restores dependencies, lists packages with known vulnerabilities, and runs GitHub CodeQL analysis for C# on pushes and pull requests targeting `master`, together with a weekly scheduled scan. |
 
 ## 🗂️ Project Structure
 
